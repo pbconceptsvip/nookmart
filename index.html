@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NookMart.ai — The Private Lobby Pantry</title>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent:#0b1b30;
+      --mint:#9be7df;
+      --slate:#2e3a46;
+      --bg:#f9fafb;
+      --gray:#eef3f7;
+      --radius:14px;
+      --maxw:1400px;
+      --transition:.25s cubic-bezier(.4,0,.2,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Inter",Arial,Helvetica,sans-serif;color:var(--slate);
+         background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+
+    /* ---------- HERO ---------- */
+    .hero{position:relative;color:#fff;overflow:hidden;width:100%;height:900px}
+    .hero img.hero-background{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-logo{position:absolute;top:50px;left:50%;transform:translateX(-50%);
+               width:160px;height:auto;z-index:3}
+    .hero::after{content:"";position:absolute;inset:0;
+       background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.15));mix-blend-mode:multiply;z-index:1}
+    .hero-content{position:absolute;top:42%;left:50%;transform:translate(-50%,-42%);
+       max-width:720px;padding:0 20px;z-index:2;text-align:center;width:calc(100% - 40px)}
+    .hero h1{font-size:3.4rem;font-weight:900;margin-bottom:18px;letter-spacing:-.75px}
+    .hero p {font-size:1.2rem;font-weight:500;opacity:.92;margin-bottom:20px}
+    .btn-primary{display:inline-block;padding:15px 32px;background:var(--mint);color:var(--accent);
+       font-weight:700;border-radius:8px;text-decoration:none;transition:var(--transition);
+       box-shadow:0 4px 14px rgba(0,0,0,.06);position:absolute;bottom:60px;right:60px;z-index:2}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+
+    /* ---------- SECTIONS ---------- */
+    section:not(.hero){max-width:var(--maxw);margin:96px auto 0;padding:0 24px}
+
+    /* features */
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:48px}
+    .feature-card{background:#fff;padding:42px 32px;border-radius:var(--radius);
+      box-shadow:0 8px 24px rgba(0,0,0,.04);transition:var(--transition);text-align:center}
+    .feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.06)}
+    .feature-icon{width:32px;height:32px;color:var(--mint);margin:0 auto 18px;display:block}
+    .feature-card h3{font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:14px}
+    .feature-card p{font-size:.97rem;opacity:.9;text-align:left}
+
+    /* ---------- HOW ---------- */
+    .how{
+      margin-top:140px;
+      background:var(--gray);
+      border-radius:var(--radius);
+      padding:120px 60px 380px;  /* bigger top & bottom padding */
+      text-align:center;
+      color:var(--accent)
+    }
+    .how h2{font-size:2rem;font-weight:800;margin-bottom:72px} /* space above steps */
+
+	/* ONE clean row of 4 on desktop  ───────────────────────────── */
+	.steps{
+	  display:grid;
+	  grid-template-columns:repeat(4,1fr);   /* always four equal columns */
+	  gap:64px;                              /* breathing room between steps */
+	  max-width:1200px;                      /* stretch wider if you like */
+	  margin:0 auto;
+	}
+
+	/* let it wrap nicely on smaller screens */
+	@media(max-width:900px){
+	  .steps{grid-template-columns:repeat(2,1fr);}  /* two per row */
+	}
+	@media(max-width:540px){
+	  .steps{grid-template-columns:1fr;}            /* single-column stack */
+	}
+
+    .step-item{display:flex;flex-direction:column;align-items:center}
+    .step-number{
+      width:54px;height:54px;border-radius:50%;background:var(--mint);color:var(--accent);
+      display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:24px
+    }
+    .step-desc{
+      font-size:1rem;font-weight:500;text-align:center;max-width:260px
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer{text-align:center;font-size:.9rem;color:#6b7a86;margin:100px 0 60px;line-height:1.8}
+    footer a{color:inherit;text-decoration:none;transition:var(--transition)}
+    footer a:hover{text-decoration:underline;color:var(--accent)}
+    footer img{width:120px;opacity:.9;margin-top:22px}
+
+    /* ---------- RESPONSIVE ---------- */
+    @media(max-width:768px){
+      .hero{height:520px}
+      .hero-logo{top:30px;width:140px}
+      .hero-content{top:45%}
+      .hero h1{font-size:2.8rem}
+      .btn-primary{padding:12px 24px;font-size:.9rem;bottom:30px;right:30px}
+      .how{padding:90px 40px 280px}
+    }
+    @media(max-width:480px){
+      .hero{height:460px}
+      .hero-logo{top:20px;width:120px}
+      .hero-content{top:44%}
+      .hero h1{font-size:2.3rem}
+      .btn-primary{left:50%;transform:translateX(-50%);right:auto;bottom:20px;
+                   width:calc(100% - 40px);max-width:320px;text-align:center}
+      .steps{gap:40px}
+      .how{padding:70px 24px 220px}
+    }
+  </style>
+</head>
+<body>
+  <!-- ========= HERO ========= -->
+  <section class="hero">
+    <img src="assets/hero-lobby.jpg" alt="Stylish lobby with NookMart unit" class="hero-background">
+    <img src="assets/nookmart-white.png" alt="NookMart.ai Logo" class="hero-logo">
+    <div class="hero-content">
+      <h1>The Private Lobby Pantry</h1>
+      <p>Elevate resident satisfaction with a zero-hassle, premium pantry—installed, stocked &amp; serviced entirely by us.</p>
+    </div>
+    <a class="btn-primary" href="mailto:hello@nookmart.ai?subject=I'd%20like%20to%20see%20NookMart">Schedule a 10-minute Demo</a>
+  </section>
+
+  <!-- ========= FEATURES ========= -->
+  <section>
+    <div class="features">
+      <div class="feature-card">
+        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <h3>Tiny Footprint</h3>
+        <p>Slips under a mantle or shelf—30″ × 30″, whisper-quiet, zero lobby clutter.</p>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 7l1 13h10l1-13H6z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+        <h3>Curated &amp; Cash-Free</h3>
+        <p>Artisan snacks, cold brew, toiletries—even stamps—secured by tap-to-open AI checkout.</p>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="8" r="5"/><polyline points="8.5 14 7 21 12 19 17 21 15.5 14"/></svg>
+        <h3>White-Glove Service</h3>
+        <p>Twice-weekly restock &amp; wipe-down by our founder. 6-hour on-call fix SLA.</p>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+        <h3>No Cost, No Headache</h3>
+        <p>We cover equipment, inventory, maintenance &amp; permits. Your team lifts zero fingers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========= HOW ========= -->
+  <section class="how">
+    <h2>How NookMart Works</h2>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <p class="step-desc">Slide the unit into any unused nook and plug into a standard outlet.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <p class="step-desc">Residents tap a card or smartphone. The door unlocks. They grab, close, and go.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <p class="step-desc">AI sensors auto-bill and ping us the moment stock is low.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">4</div>
+        <p class="step-desc">We restock twice weekly (minimum) and email you a concise usage snapshot.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========= FOOTER ========= -->
+  <footer>
+    © 2025 NookMart.ai  |  DC Business License #2025-123456  |  <a href="mailto:hello@nookmart.ai">hello@nookmart.ai</a><br>
+    <img src="assets/nookmart-logo.png" alt="NookMart.ai logo">
+  </footer>
+</body>
+</html>
